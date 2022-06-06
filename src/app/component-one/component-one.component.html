@@ -1,0 +1,9 @@
+<p>component-one works!</p>
+{{dt}}<br>
+
+<input type="button" [value]="dt" (click)="display()">
+<div>{{data}}</div>
+<input [(ngModel)]=data type="text">
+<p>{{dt | uppercase}}</p>
+<p>lowercase: {{dt | lowercase}}</p>
+<p>lowercase: {{dt | uppercase}}</p>

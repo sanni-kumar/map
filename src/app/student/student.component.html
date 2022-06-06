@@ -1,0 +1,29 @@
+<p>student works!</p>
+
+Name: <input type="text"><br><br>
+Project: <input type="text"><br><br>
+Technology: <input type="text"><br>
+<h1>Contact Detail</h1><br>
+
+<form [formGroup]="newForm">
+    <div formArrayName="itemRows">
+
+        <div *ngFor="let itemrow of newForm.controls.itemRows['controls']; let i=index" [formGroupName]="i">
+            <span *ngIf="itemrow.get('name').invalid" class="span-validation">Enter Valid Name</span>
+            <span *ngIf="itemrow.get('mob').invalid && itemrow.get('mob').touched" class="span-validation">Enter Valid Number</span>
+            <span *ngIf="itemrow.get('city').invalid" class="span-validation1">Enter Valid City</span><br>
+            Name: <input type="text" name="name" formControlName="name" />
+            Mob: <input type="text" name="mob" formControlName="mob" />
+            
+            City: <input type="text" name="city" formControlName="city" /><button (click)="removeContract(i)"
+                 *ngIf="display">Remove</button><br><br>
+                 
+                
+        </div>
+
+        <button type="submit" (click)="add()">Add Data</button>
+        <button type="submit" (click)="details()">Submit</button>
+        <button type="submit" onclick="openNew()">Data</button>
+    </div>
+
+</form>

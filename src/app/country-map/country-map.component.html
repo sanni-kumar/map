@@ -1,0 +1,29 @@
+<label for="cars" class="country_label">Choose a Country:</label><br>
+<form #countryDetails="ngForm">
+
+    <!-- <select name="country" id="country1" [(ngModel)]="country" (change)="showData()">
+        <option [ngValue]="el" class="country" *ngFor="let el of countryName">{{el}}
+        </option>
+    </select><br> -->
+    <div>
+        <ng-select [(ngModel)]="country" name="country" id="country1" (change)="showData()">
+            <ng-option *ngFor="let el of countryName" [value]="el">{{el}}</ng-option>
+        </ng-select>
+    </div>
+
+    <button type="button" class="btn btn-primary" [ngClass]="isTrue ? 'btn btn-secondary' : '' "
+        (click)="displayCountry()" [disabled]="isTrue">Submit</button>
+    <button type="button" class="btn btn-primary rsbtn" [ngClass]="isToggle ? 'btn btn-secondary' : '' "
+        (click)="clearDetails(countryDetails)" [disabled]="isToggle">Reset</button>
+
+
+    <div class="my-map">
+        <!-- <a [href]="my">{{my}}</a> -->
+    </div>
+
+    <div class="your-map" *ngIf="latitude !=='' && longitude !=='' ">
+        <agm-map [latitude]="latitude" [longitude]="longitude">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+        </agm-map>
+    </div>
+</form>
